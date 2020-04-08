@@ -3,7 +3,20 @@
 
 # 개미수열
 def ant(i):
-    pass
+    inp = str(i)
+    cnt = 0
+    target = inp[0]
+    res = ''
+    
+    for a in inp:
+        if a == target:
+            cnt += 1
+        else:
+            res += target + str(cnt)
+            cnt = 1
+            target = a
+    res += target + str(cnt)
+    return res
 
 
 if __name__ == '__main__':
@@ -11,6 +24,7 @@ if __name__ == '__main__':
     val = ant(1)
     
     print('1')
+    print(val)
     for i in range(1, n):
         val = ant(val)
         print(val)
