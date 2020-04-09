@@ -3,6 +3,7 @@
 from bs4 import BeautifulSoup
 import requests
 
+# kh 강사소개 크롤링하기
 response = requests.get('https://www.iei.or.kr/intro/teacher.kh')
 
 soup = BeautifulSoup(response.text, 'html.parser')
