@@ -12,9 +12,30 @@
 		 $.getJSON("http://localhost:8585/crawling", function(data){
 	      console.log(data.movies)
 	      
-	      $.each(data, function(key, val){
+	      var movies = data.movies;
+	      
+	      // 별점 높은 순서대로 정렬하기
+	      movies.sort(function(a, b) {
+	    	  return b.star - a.star;
+	      });
+	      
+	      for(var i=0; i<movies.length; i++) {
+	    	  
+	    	  var $tr = $("<tr>");
+	    	  var $title = $("<td>").append(movies[i].title);
+	    	  var $star = $("<td>").append(movies[i].star);
+	    	  
+	    	  $tr.append($title);
+	    	  $tr.append($star);
+	    	  
+	    	  $("tbody").append($tr);
+	      }
+	      
+	      /* $.each(data, function(key, val){
+	    	  
 	    	  if(key == 'movies'){
-	    		  for(var i=0;i<val.length;i++){
+	    		  
+	    		  for(var i=0; i<val.length; i++){
 	    			  var $tr = $("<tr>");
 	    			  
 	    			  for(var j in val[i]) {
@@ -24,9 +45,7 @@
 	                  $("tbody").append($tr);
 	              }
 	    	  }
-	      });
-	      
-	      $("#tbody").append(data);
+	      }); */
 	      
 	   });
 	}
